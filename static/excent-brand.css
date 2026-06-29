@@ -1,0 +1,482 @@
+/* eXcent rebrand layer.
+   Loaded after the legacy Odysseus stylesheet; keep this file token-driven so
+   the large app surface can be themed without touching every component. */
+
+:root,
+:root.excent-brand {
+  --ex-red: #ed1c24;
+  --ex-blue: #70c8ec;
+  --ex-green: #74c476;
+  --ex-orange: #f3662f;
+  --ex-yellow: #fdbb3d;
+  --ex-graphite: #101820;
+  --ex-slate: #2b3036;
+  --ex-grey: #85878a;
+  --ex-mist: #f4f7f9;
+  --ex-paper: #ffffff;
+
+  --bg: #f4f7f9;
+  --fg: #17202a;
+  --panel: #ffffff;
+  --border: #d8e0e6;
+  --red: var(--ex-red);
+  --green: var(--ex-green);
+  --warn: var(--ex-yellow);
+  --accent: var(--ex-blue);
+  --accent-primary: var(--ex-red);
+  --accent-error: var(--ex-red);
+  --brand-color: var(--ex-red);
+  --sidebar-bg: #101820;
+  --hamburger-color: #ffffff;
+  --input-bg: #ffffff;
+  --input-border: #c8d4dc;
+  --send-btn-bg: var(--ex-red);
+  --send-btn-hover: #c9151b;
+  --user-bubble-bg: #eef8fc;
+  --ai-bubble-bg: #ffffff;
+  --bubble-border: #d8e0e6;
+  --toggle-active: var(--ex-red);
+  --code-bg: #101820;
+  --code-fg: #eaf2f7;
+  --font-family: "Inter", "Raleway", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html.excent-brand,
+html.excent-brand body {
+  color-scheme: light;
+}
+
+html.excent-brand body {
+  background:
+    radial-gradient(circle at 16% 10%, color-mix(in srgb, var(--ex-blue) 20%, transparent) 0 18rem, transparent 26rem),
+    radial-gradient(circle at 84% 14%, color-mix(in srgb, var(--ex-green) 18%, transparent) 0 16rem, transparent 25rem),
+    linear-gradient(135deg, #f8fafb 0%, #eef3f6 100%);
+  color: var(--fg);
+  font-family: var(--font-family);
+}
+
+html.excent-brand body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    linear-gradient(118deg, transparent 0 9%, color-mix(in srgb, var(--ex-blue) 18%, transparent) 9.2% 10.1%, transparent 10.4% 100%),
+    linear-gradient(118deg, transparent 0 66%, color-mix(in srgb, var(--ex-green) 14%, transparent) 66.2% 67.1%, transparent 67.4% 100%),
+    linear-gradient(118deg, transparent 0 86%, color-mix(in srgb, var(--ex-yellow) 18%, transparent) 86.2% 87.2%, transparent 87.5% 100%);
+  opacity: .75;
+}
+
+html.excent-brand .sidebar,
+html.excent-brand .icon-rail {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--ex-graphite) 96%, #fff) 0%, #0b1118 100%) !important;
+  color: #eaf2f7;
+  border-color: color-mix(in srgb, var(--ex-blue) 32%, transparent);
+  box-shadow: 10px 0 28px rgba(16, 24, 32, .16);
+}
+
+html.excent-brand .sidebar::before,
+html.excent-brand .icon-rail::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--ex-red), var(--ex-green) 34%, var(--ex-blue) 63%, var(--ex-yellow));
+  pointer-events: none;
+}
+
+html.excent-brand .icon-rail {
+  padding-top: 68px;
+}
+
+html.excent-brand .icon-rail::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  width: 34px;
+  height: 34px;
+  transform: translateX(-50%);
+  background: url("/static/assets/Excent_Logo_Groupe-BLANC-A3.png") center / contain no-repeat;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, .28));
+  pointer-events: none;
+}
+
+html.excent-brand .sidebar-header,
+html.excent-brand .sidebar-user-bar {
+  background: transparent !important;
+  border-color: rgba(255, 255, 255, .08) !important;
+}
+
+html.excent-brand .sidebar-header {
+  justify-content: flex-start;
+  min-height: clamp(70px, 9vh, 88px);
+  padding: clamp(10px, 1.8vh, 16px) 12px 4px 54px;
+}
+
+html.excent-brand .sidebar.right-side .sidebar-header {
+  padding-left: 12px;
+  padding-right: 54px;
+}
+
+html.excent-brand .sidebar-brand {
+  display: flex !important;
+  width: clamp(118px, 58%, 174px);
+  min-height: clamp(54px, 7.5vh, 72px);
+  align-items: center;
+  justify-content: flex-start;
+  flex: 0 0 auto;
+}
+
+html.excent-brand .sidebar-brand::before {
+  content: "";
+  width: 100%;
+  height: clamp(50px, 7vh, 70px);
+  display: block;
+  background: url("/static/assets/Excent_Logo_Groupe-BLANC-A3.png") left center / contain no-repeat;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, .28));
+}
+
+html.excent-brand .sidebar-brand-title {
+  display: none !important;
+}
+
+html.excent-brand .sidebar .list-item,
+html.excent-brand .section-header-flex,
+html.excent-brand .icon-rail-btn,
+html.excent-brand .user-bar-btn {
+  border-radius: 8px;
+  transition: transform .18s ease, background-color .18s ease, color .18s ease, border-color .18s ease, opacity .18s ease;
+}
+
+html.excent-brand .sidebar .list-item:hover,
+html.excent-brand .section-header-flex:hover,
+html.excent-brand .icon-rail-btn:hover,
+html.excent-brand .user-bar-btn:hover {
+  background: rgba(255, 255, 255, .075) !important;
+  color: #ffffff;
+  transform: translateX(2px);
+}
+
+html.excent-brand .icon-rail-btn:hover {
+  transform: translateX(0) translateY(-1px);
+}
+
+html.excent-brand .list-item.active,
+html.excent-brand .icon-rail-btn.active,
+html.excent-brand .rail-new-chat {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--ex-red) 28%, transparent), color-mix(in srgb, var(--ex-blue) 18%, transparent)) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, .16) !important;
+}
+
+html.excent-brand .section-title,
+html.excent-brand .sidebar .grow,
+html.excent-brand .user-bar-name {
+  color: color-mix(in srgb, #ffffff 86%, transparent);
+}
+
+html.excent-brand .chat-container {
+  z-index: 1;
+}
+
+html.excent-brand .chat-top-bar {
+  color: var(--ex-slate);
+}
+
+html.excent-brand .chat-meta-overlay,
+html.excent-brand .model-picker-btn,
+html.excent-brand .model-picker-menu,
+html.excent-brand .dropdown,
+html.excent-brand .search-popup,
+html.excent-brand .modal-content,
+html.excent-brand .admin-card,
+html.excent-brand .doclib-card,
+html.excent-brand .gallery-modal-content,
+html.excent-brand .doclib-modal-content {
+  background: color-mix(in srgb, var(--panel) 92%, transparent) !important;
+  border-color: var(--border) !important;
+  box-shadow: 0 18px 44px rgba(16, 24, 32, .10);
+}
+
+html.excent-brand .modal-content,
+html.excent-brand .doclib-modal-content,
+html.excent-brand .gallery-modal-content {
+  border-radius: 10px !important;
+}
+
+html.excent-brand .modal-header {
+  border-color: color-mix(in srgb, var(--border) 78%, transparent) !important;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--ex-blue) 8%, transparent), color-mix(in srgb, var(--ex-green) 6%, transparent)) !important;
+}
+
+html.excent-brand #welcome-screen {
+  gap: clamp(2px, .8vh, 8px);
+  width: min(92vw, 980px);
+}
+
+html.excent-brand #welcome-screen::before {
+  content: "";
+  width: clamp(220px, 32vw, 420px);
+  height: clamp(128px, 18.6vw, 245px);
+  max-height: 28vh;
+  display: block;
+  margin-bottom: clamp(0px, .6vh, 6px);
+  background: url("/static/assets/Excent_Logo_Groupe-GRIS-A3.png") center / contain no-repeat;
+  filter: drop-shadow(0 18px 28px rgba(16, 24, 32, .12));
+}
+
+html.excent-brand #welcome-screen .welcome-name {
+  font-size: 0;
+  margin: 0;
+}
+
+html.excent-brand #welcome-screen .welcome-name::after {
+  content: "AI Workspace";
+  display: inline-block;
+  font-size: clamp(1rem, 1.45vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ex-graphite);
+  -webkit-text-fill-color: currentColor;
+  background: none;
+}
+
+html.excent-brand #welcome-screen .welcome-boat {
+  display: none;
+}
+
+html.excent-brand #welcome-screen .welcome-sub {
+  color: color-mix(in srgb, var(--ex-slate) 74%, transparent);
+  opacity: 1;
+  max-width: 440px;
+}
+
+html.excent-brand #welcome-screen .welcome-tip {
+  color: var(--ex-grey);
+  opacity: .75;
+}
+
+html.excent-brand .chat-input-bar {
+  background: color-mix(in srgb, #ffffff 86%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ex-blue) 32%, var(--border));
+  border-radius: 14px;
+  box-shadow: 0 22px 55px rgba(16, 24, 32, .14);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+html.excent-brand #message,
+html.excent-brand input,
+html.excent-brand textarea,
+html.excent-brand select {
+  font-family: var(--font-family);
+}
+
+html.excent-brand #message {
+  color: var(--fg);
+}
+
+html.excent-brand #message::placeholder {
+  color: color-mix(in srgb, var(--ex-grey) 82%, transparent);
+}
+
+html.excent-brand button,
+html.excent-brand .confirm-btn-primary,
+html.excent-brand .send-btn,
+html.excent-brand #send-btn,
+html.excent-brand #theme-save-go,
+html.excent-brand .research-start-btn {
+  transition: transform .16s ease, box-shadow .16s ease, background-color .16s ease, border-color .16s ease, opacity .16s ease;
+}
+
+html.excent-brand .confirm-btn-primary,
+html.excent-brand #theme-save-go,
+html.excent-brand .research-start-btn {
+  background: linear-gradient(135deg, var(--ex-red), color-mix(in srgb, var(--ex-orange) 84%, var(--ex-red))) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+html.excent-brand .confirm-btn-primary:hover,
+html.excent-brand #theme-save-go:hover,
+html.excent-brand .research-start-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--ex-red) 24%, transparent);
+}
+
+html.excent-brand .msg {
+  border: 1px solid var(--bubble-border);
+  box-shadow: 0 10px 24px rgba(16, 24, 32, .06);
+}
+
+html.excent-brand .msg-user {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--ex-blue) 18%, #fff), #ffffff) !important;
+}
+
+html.excent-brand .msg-ai {
+  background: #ffffff !important;
+}
+
+html.excent-brand a,
+html.excent-brand .setup-trigger-link {
+  color: color-mix(in srgb, var(--ex-red) 86%, #000) !important;
+}
+
+html.excent-brand ::selection {
+  background: color-mix(in srgb, var(--ex-blue) 35%, transparent);
+}
+
+html.excent-brand ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--ex-red), var(--ex-blue));
+}
+
+html.excent-brand .theme-swatch[data-theme="excent"] {
+  border-color: var(--ex-red);
+}
+
+html.excent-brand .excent-accent-pulse {
+  animation: excent-accent-pulse 1.8s ease-out infinite;
+}
+
+@keyframes excent-accent-pulse {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--ex-blue) 30%, transparent); }
+  70% { box-shadow: 0 0 0 8px color-mix(in srgb, var(--ex-blue) 0%, transparent); }
+  100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--ex-blue) 0%, transparent); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.excent-brand *,
+  html.excent-brand *::before,
+  html.excent-brand *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .001ms !important;
+  }
+}
+
+@media (max-width: 768px) {
+  html.excent-brand #welcome-screen {
+    width: min(92vw, 420px);
+  }
+
+  html.excent-brand #welcome-screen::before {
+    width: clamp(180px, 58vw, 300px);
+    height: clamp(104px, 33.8vw, 175px);
+    max-height: 22vh;
+  }
+
+  html.excent-brand .sidebar-header {
+    min-height: 64px;
+    padding-left: 48px;
+  }
+
+  html.excent-brand .sidebar-brand {
+    width: 132px;
+    min-height: 58px;
+  }
+
+  html.excent-brand .sidebar-brand::before {
+    width: 100%;
+    height: 58px;
+  }
+
+  html.excent-brand .icon-rail {
+    padding-top: 62px;
+  }
+
+  html.excent-brand .icon-rail::after {
+    top: 10px;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+
+/* Login surface */
+body.excent-login {
+  background:
+    linear-gradient(130deg, rgba(16, 24, 32, .94), rgba(16, 24, 32, .86)),
+    radial-gradient(circle at 18% 16%, color-mix(in srgb, var(--ex-blue) 34%, transparent) 0 18rem, transparent 25rem),
+    radial-gradient(circle at 82% 12%, color-mix(in srgb, var(--ex-green) 24%, transparent) 0 16rem, transparent 24rem),
+    var(--ex-graphite) !important;
+  color: var(--fg) !important;
+  overflow: hidden;
+}
+
+body.excent-login::before {
+  content: "";
+  position: fixed;
+  inset: -12vh -12vw;
+  background:
+    linear-gradient(122deg, transparent 0 14%, color-mix(in srgb, var(--ex-blue) 26%, transparent) 14.2% 15.4%, transparent 15.7% 100%),
+    linear-gradient(122deg, transparent 0 58%, color-mix(in srgb, var(--ex-green) 22%, transparent) 58.2% 59.4%, transparent 59.7% 100%),
+    linear-gradient(122deg, transparent 0 78%, color-mix(in srgb, var(--ex-yellow) 22%, transparent) 78.2% 79.5%, transparent 79.8% 100%);
+  opacity: .7;
+  pointer-events: none;
+}
+
+body.excent-login .card {
+  width: 390px;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--ex-blue) 36%, transparent);
+  background: color-mix(in srgb, #ffffff 94%, transparent);
+  color: var(--fg);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, .34);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+body.excent-login .logo {
+  margin-bottom: 1.25rem;
+}
+
+body.excent-login .excent-login-logo {
+  display: block;
+  width: min(310px, 74vw);
+  height: min(180px, 43vw);
+  margin: 0 auto;
+  background: url("/static/assets/Excent_Logo_Groupe-BLANC-A3.png") center / contain no-repeat;
+}
+
+body.excent-login .setup-note,
+body.excent-login label,
+body.excent-login .toggle {
+  color: color-mix(in srgb, var(--ex-slate) 68%, transparent);
+}
+
+body.excent-login input:not(.remember-check) {
+  background: #ffffff;
+  border-color: #c8d4dc;
+  color: var(--fg);
+  border-radius: 8px;
+}
+
+body.excent-login input:not(.remember-check):focus {
+  border-color: var(--ex-blue);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ex-blue) 22%, transparent);
+}
+
+body.excent-login button[type="submit"] {
+  background: linear-gradient(135deg, var(--ex-red), var(--ex-orange));
+  border-radius: 8px;
+  box-shadow: 0 14px 28px color-mix(in srgb, var(--ex-red) 22%, transparent);
+}
+
+body.excent-login button[type="submit"]:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 34px color-mix(in srgb, var(--ex-red) 28%, transparent);
+}
+
+body.excent-login .pw-toggle {
+  color: var(--ex-grey);
+}
+
+body.excent-login .version-label {
+  color: #ffffff;
+  opacity: .35;
+}

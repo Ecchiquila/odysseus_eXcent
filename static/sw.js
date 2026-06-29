@@ -7,7 +7,7 @@
 //   - Other static assets (images/fonts/libs): cache-first with bg refresh.
 //   - API / non-GET: never cached.
 // Bump CACHE_NAME whenever the precache list or SW logic changes.
-const CACHE_NAME = 'odysseus-v327';
+const CACHE_NAME = 'odysseus-v329-excent-logo';
 
 // Core shell precached on install so repeat opens are instant without any
 // network wait. Keep this list in sync with the <script type="module"> tags
@@ -15,6 +15,9 @@ const CACHE_NAME = 'odysseus-v327';
 const PRECACHE = [
   '/',
   '/static/style.css',
+  '/static/excent-brand.css',
+  '/static/assets/Excent_Logo_Groupe-BLANC-A3.png',
+  '/static/assets/Excent_Logo_Groupe-GRIS-A3.png',
   '/static/app.js',
   '/static/js/storage.js',
   '/static/js/ui.js',
@@ -46,6 +49,7 @@ const PRECACHE = [
   '/static/js/settings.js',
   '/static/js/admin.js',
   '/static/js/init.js',
+  '/static/js/excent-brand.js',
   '/static/js/slashCommands.js',
   '/static/js/emailInbox.js',
   '/static/js/emailLibrary/utils.js',

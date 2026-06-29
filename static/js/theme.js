@@ -9,6 +9,12 @@ import { makeWindowDraggable } from './windowDrag.js';
 import { snapModalToZone } from './tileManager.js';
 
 export const THEMES = {
+  excent:     { bg:'#f4f7f9', fg:'#17202a', panel:'#ffffff', border:'#d8e0e6', red:'#ed1c24',
+                advanced: { brandColor:'#ed1c24', sidebarBg:'#101820', hamburgerColor:'#ffffff',
+                            userBubbleBg:'#eef8fc', aiBubbleBg:'#ffffff', bubbleBorder:'#d8e0e6',
+                            inputBg:'#ffffff', inputBorder:'#c8d4dc',
+                            sendBtnBg:'#ed1c24', sendBtnHover:'#c9151b',
+                            toggleActive:'#ed1c24', codeBg:'#101820', codeFg:'#eaf2f7' } },
   dark:       { bg:'#282c34', fg:'#9cdef2', panel:'#111111', border:'#355a66', red:'#e06c75' },
   light:      { bg:'#f0ebe3', fg:'#5a5248', panel:'#faf6f0', border:'#d4cdc2', red:'#c47d5a' },
   midnight:   { bg:'#0d1117', fg:'#c9d1d9', panel:'#161b22', border:'#30363d', red:'#f85149' },
@@ -31,7 +37,7 @@ export const THEMES = {
   cute:       { bg:'#fff0f5', fg:'#d4608a', panel:'#fff8fa', border:'#f0c0d0', red:'#ff6b9d' },
 };
 
-const DEFAULT_THEME = 'dark';
+const DEFAULT_THEME = 'excent';
 const LS_KEY = 'odysseus-theme';
 const CUSTOM_THEMES_KEY = 'odysseus-custom-themes';
 
@@ -46,6 +52,7 @@ const MAX_CUSTOM_THEMES = 8;
 
 // Default background patterns for built-in themes
 const THEME_DEFAULT_PATTERN = {
+  excent:     'none',
   dark:       'none',
   light:      'dots',
   midnight:   'rain',
@@ -183,7 +190,7 @@ const ADV_KEYS = [
   { key: 'aiBubbleBg',         css: '--ai-bubble-bg',      label: 'AI Chat Bubble',   group: 'Chat Bubbles' },
   { key: 'bubbleBorder',       css: '--bubble-border',     label: 'Border Chat Bubble', group: 'Chat Bubbles' },
   { key: 'sidebarBg',          css: '--sidebar-bg',        label: 'Sidebar Bg',       group: 'Sidebar' },
-  { key: 'brandColor',         css: '--brand-color',       label: 'Odysseus Logo',    group: 'Sidebar' },
+  { key: 'brandColor',         css: '--brand-color',       label: 'Logo eXcent',    group: 'Sidebar' },
   { key: 'hamburgerColor',     css: '--hamburger-color',   label: 'Hamburger Menu',   group: 'Sidebar' },
   { key: 'inputBg',            css: '--input-bg',          label: 'Input Bg',         group: 'Chat Input / Prompt Area' },
   { key: 'inputBorder',        css: '--input-border',      label: 'Input Border',     group: 'Chat Input / Prompt Area' },
@@ -329,21 +336,24 @@ const _ROUTE_FAVICON_SHAPES = {
 function _updateFavicon(fg) {
   const path = (window.location.pathname || '').toLowerCase();
   const routeShape = _ROUTE_FAVICON_SHAPES[path];
-  let svg;
+  let href = '/static/assets/Excent_Logo_Groupe-GRIS-A3.png';
+  let type = 'image/png';
+
   if (routeShape) {
-    svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'>${routeShape.split('__C__').join(fg)}</svg>`;
-  } else {
-    svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M16 4L16 22L6 22Z' fill='${fg}'/><path d='M16 8L16 22L24 22Z' fill='${fg}' opacity='0.6'/><path d='M4 24Q10 20 16 24Q22 28 28 24' stroke='${fg}' stroke-width='2.5' fill='none' stroke-linecap='round'/></svg>`;
+    const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'>${routeShape.split('__C__').join(fg)}</svg>`;
+    href = 'data:image/svg+xml,' + encodeURIComponent(svg);
+    type = 'image/svg+xml';
   }
-  const href = 'data:image/svg+xml,' + encodeURIComponent(svg);
+
   let link = document.querySelector("link[rel='icon']");
   if (!link) {
     link = document.createElement('link');
     link.rel = 'icon';
-    link.type = 'image/svg+xml';
     document.head.appendChild(link);
   }
+  link.type = type;
   link.href = href;
+
   let apple = document.querySelector("link[rel='apple-touch-icon']");
   if (!apple) {
     apple = document.createElement('link');
@@ -1258,7 +1268,7 @@ export function initThemeUI() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'odysseus_' + (obj.name || 'theme') + '.json';
+      a.download = 'excent_' + (obj.name || 'theme') + '.json';
       a.click();
       URL.revokeObjectURL(url);
       newExp.innerHTML = '&#x2713; Downloaded!';
